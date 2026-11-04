@@ -1,13 +1,25 @@
 import LikeButton from "./LikeButton";
 import CommentSection from "./CommentSection";
 
-export default function PostCard({ post }) {
+const PostCard = ({ post }) => {
+  const { id, username, image } = post;
+
   return (
-    <div className="post">
-      <h4>{post.username}</h4>
-      <img src={post.image} alt="" />
-      <LikeButton />
-      <CommentSection postId={post.id} />
-    </div>
+    <article className="post">
+      <header className="post-header">
+        <h4>{username}</h4>
+      </header>
+
+      <div className="post-image">
+        <img src={image} alt={`${username}'s post`} />
+      </div>
+
+      <footer className="post-actions">
+        <LikeButton />
+        <CommentSection postId={id} />
+      </footer>
+    </article>
   );
-}
+};
+
+export default PostCard;
